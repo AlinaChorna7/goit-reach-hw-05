@@ -1,39 +1,42 @@
-import {useState, useEffect  } from "react";
-import axios  from "axios";
 
-const API_KEY = 'e7afc97253756bde4794256be54685bd';
 
-export default function MoviesPage(){
-    const [query, setQuery]= useState('')
-    const [movies, setMovies]= useState([]);
+import { useState } from "react";
+import  {fetchMovieQuery}  from "../../services/TheMoviesApi.js"; 
+import { Link } from "react-router-dom";
 
-    const searchMovie = async ()=>{
+
+export default function SearchMovies() {
+    const [query, setQuery] = useState("");
+    const [movies, setMovies] = useState([]);
+
+    const handleSearch = async (event) => {
+        event.preventDefault();
         try {
-           const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`);
-setMovies(response.data.results);
+            const moviesList = await fetchMovieQuery(query);
+            setMovies(moviesList);
         } catch (error) {
-            console.error('Error searching movies:', error)
+            console.error('Error fetching movies by query', error);
         }
-    }
-const handleSearching = (event)=>{
-    event.preventDefault()
-    searchMovie()
-};
+    };
 
-return(
-    <div>
-        <h1>Search Movies</h1>
-<form onSubmit={handleSearching}>
-<input type="text"
-value={query}
-onChange={(event)=> setQuery(event.target.value)}/>
-<button type="submit">Search</button>
-</form>
-<ul>
-    {movies.map(movie =>(
-        <li key={movie.id}>{movie.title}</li>
-    ))}
-</ul>
-    </div>
-)
+    return (
+        <div>
+            <form onSubmit={handleSearch}>
+                <input 
+                    type="text" 
+                    value={query} 
+                    onChange={(e) => setQuery(e.target.value)} 
+                    placeholder="Search for movies" 
+                />
+                <button type="submit">Search</button>
+            </form>
+            <ul>
+                {movies.map(movie => (
+                    <li key={movie.id}>
+                        <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
 }

@@ -1,33 +1,42 @@
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-// import Cast from '../components/Cast';
-// import Reviews from '../components/Reviews';
+import { Outlet, useParams, Link } from "react-router-dom"
+import { fetchMovieDetails } from "../../services/TheMoviesApi"
+import { useEffect, useState } from "react"
+import MovieReview from "../../components/MovieReviews/MovieReviews"
+import GoBack from "../../components/GoBack/GoBack"
 
-
-const API_KEY = 'e7afc97253756bde4794256be54685bd';
 
 export default function MovieDetailsPage(){
-const {movieId}= useParams();
-const[movieDateils, setMovieDetails]= useState(null);
-const [cast, setCast]=useState([]);
-const [review, setReview]= useState([]);
-
-
+    const {movieId}= useParams()
+    const[movie, setMovie]=useState(null)
 useEffect(()=>{
-const fetchMoviesDetails = async()=>{
+const getMovieDetails = async()=>{
     try {
-        const detailsResponse = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`)
-        setMovieDetails(detailsResponse.data)
-
-        const castResponse = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}`)
-        setCast(castResponse.data.results)
-
-        const reviewResponse = await axios.get()
+       const movieData = await fetchMovieDetails(movieId)
+       setMovie(movieData) 
     } catch (error) {
-        console.error(`Error fetching movie details`, error);
+        console.error('error fetching movie details', error)
     }
+}   
+  getMovieDetails()
+}, []);
+
+
+if (!movie) {
+    return <p>Loading...</p>;
+  }
+
+    return(
+        <div>
+           <GoBack/>
+            <h1>{movie.title}</h1>
+<p>{movie.overview}</p>
+<p>Release Date: {movie.release_date}</p>
+<p>Rating: {movie.vote_average}</p>
+
+<Link to={`/movies/${movieId}/cast`}>Cast</Link>
+<Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
+
+<Outlet/>
+        </div>
+    )
 } 
-}
-)
-}
