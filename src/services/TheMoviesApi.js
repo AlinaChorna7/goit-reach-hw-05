@@ -54,9 +54,17 @@ export const fetchMovieReviews = async (movieId) => {
 };
 
 
+
+
 export const fetchMovieQuery = async (query) => {
     try {
-        const response = await axios.get(`${BASE_URL}/search/movie`, options);
+        const response = await axios.get(`${BASE_URL}/search/movie`, {
+            ...options,
+            params: {
+                query, 
+                include_adult: false,  
+            },
+        });
         return response.data.results; 
     } catch (error) {
         console.error('Error fetching movies by query:', error);

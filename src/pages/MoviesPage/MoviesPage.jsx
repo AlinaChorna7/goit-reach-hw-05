@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { fetchMovieQuery } from "../../services/TheMoviesApi.js"; 
 import { Link } from "react-router-dom";
+import styles from './MoviesPage.module.css'
 
 export default function SearchMovies() {
     const [query, setQuery] = useState("");
@@ -25,7 +26,7 @@ export default function SearchMovies() {
                     onChange={(e) => setQuery(e.target.value)} 
                     placeholder="Search for movies" 
                 />
-                <button type="submit">Search</button>
+                <button type="submit" className={styles.btnsbm}>Search</button>
             </form>
             <ul>
                 {movies.map(movie => (
