@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 import { fetchTrendingMovies } from "../../services/TheMoviesApi"
 import { Link } from "react-router-dom";
-import styles from './homepage.module.css';
+import styles from './HomePage.module.css';
 
 
 export default function HomePage(){
