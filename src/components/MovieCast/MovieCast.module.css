@@ -1,0 +1,27 @@
+.castList {
+    list-style-type: none; /* Прибираємо маркери списку */
+    padding: 0; /* Прибираємо відступи */
+ display:flex;
+ flex-direction: column;
+ align-items: left ;
+ justify-content: left;
+ 
+    gap: 10px; /* Відстань між елементами */
+}
+
+.actorItem {
+    display: flex; /* Використовуємо флекс для вирівнювання зображення та імені */
+    align-items: center; /* Вертикальне вирівнювання по центру */
+    width: 150px; /* Ширина для кожного актора */
+}
+
+.actorPhoto {
+    width: 60px; /* Зменшене ширина фотографії */
+    height: auto; /* Автоматична висота для збереження пропорцій */
+    border-radius: 5px; /* Закруглені кути */
+    margin-right: 10px; /* Відступ справа для розділення з ім'ям */
+}
+
+.actorName {
+    font-size: 14px; /* Розмір шрифту для імені актора */
+}

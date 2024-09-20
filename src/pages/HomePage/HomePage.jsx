@@ -1,6 +1,9 @@
+
 import { useEffect, useState } from "react"
 import { fetchTrendingMovies } from "../../services/TheMoviesApi"
 import { Link } from "react-router-dom";
+import styles from './homepage.module.css';
+
 
 export default function HomePage(){
 const [ movies, setMovies]= useState([]);
@@ -12,21 +15,24 @@ useEffect(()=>{
             console.log(moviesList)
             setMovies(moviesList)
         } catch (error) {
-            console.error('error feychin trending movies on HomePage', error)
+            console.error('error fetchin trending movies on HomePage', error)
         }
     } 
     getMovies()
 }, [])
 
 return (
-    <div>
-        <h1>Trending movies</h1>
-        <ul>
-            {movies.map(movie => (
-                <li key={movie.id}><Link to={`/movies/${movie.id}`}>{movie.title}</Link></li>
-            ))}
-        </ul>
-    </div>
+    <div className={styles.container}>
+    <h1 className={styles.heading}>Trending Movies</h1>
+    <ul className={styles.movieList}>
+        {movies.map(movie => (
+            <li key={movie.id} className={styles.movieItem}>
+                <Link to={`/movies/${movie.id}`} className={styles.movieLink}>
+                    {movie.title}
+                </Link>
+            </li>
+        ))}
+    </ul>
+</div>
 );
 }
-

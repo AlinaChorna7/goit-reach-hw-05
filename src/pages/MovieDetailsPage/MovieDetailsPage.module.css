@@ -1,0 +1,73 @@
+.container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
+.movieDetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+}
+
+.poster {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info {
+  flex: 1;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  font-size: 32px;
+ 
+  margin-bottom: 10px;
+}
+
+.overview {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.releaseDate,
+.rating {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.title-additional{
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Вирівнювання по лівому краю */
+  margin-top: 20px;
+}
+
+.link {
+    text-decoration: underline;
+ 
+ 
+  color: black;
+
+
+}
+
+.link:hover {
+color: blue;
+}
+ 
