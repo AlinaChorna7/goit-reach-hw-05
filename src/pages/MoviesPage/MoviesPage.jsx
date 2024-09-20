@@ -1,9 +1,6 @@
-
-
 import { useState } from "react";
-import  {fetchMovieQuery}  from "../../services/TheMoviesApi.js"; 
+import { fetchMovieQuery } from "../../services/TheMoviesApi.js"; 
 import { Link } from "react-router-dom";
-
 
 export default function SearchMovies() {
     const [query, setQuery] = useState("");
@@ -40,4 +37,3 @@ export default function SearchMovies() {
         </div>
     );
 }
-

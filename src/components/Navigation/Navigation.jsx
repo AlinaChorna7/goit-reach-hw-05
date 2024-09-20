@@ -1,9 +1,9 @@
-import {Link} from 'react-router-dom'
-import styles from './Navigation.module.css'
+import { Link } from 'react-router-dom';
+import styles from './Navigation.module.css';
 
-export default function Navigation(){
-    return(
-       <nav className={styles.nav}>
+export default function Navigation() {
+    return (
+        <nav className={styles.nav}>
             <ul className={styles.navList}>
                 <li className={styles.navItem}>
                     <Link to="/" className={styles.navLink}>Home</Link>
@@ -13,5 +13,5 @@ export default function Navigation(){
                 </li>
             </ul>
         </nav>
-)
+    );
 }

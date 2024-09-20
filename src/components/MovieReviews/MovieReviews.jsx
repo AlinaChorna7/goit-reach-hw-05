@@ -1,23 +1,19 @@
 import { useEffect, useState } from "react";
 import { fetchMovieReviews } from "../../services/TheMoviesApi";
 import { useParams } from "react-router-dom";
+import styles from './MovieReviews.module.css';
 
-export default function MovieReview() {
+export default function MovieReviews() {
     const { movieId } = useParams();
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
         const getMovieReviews = async () => {
             try {
-                const reviewData = await fetchMovieReviews(movieId);
-                if (reviewData.results) {
-                    setReviews(reviewData.results);
-                } else {
-                    setReviews([]);
-                }
+                const reviewsData = await fetchMovieReviews(movieId);
+                setReviews(reviewsData); 
             } catch (error) {
                 console.error("Error fetching movie reviews:", error);
-                setReviews([]);
             }
         };
         getMovieReviews();
@@ -28,16 +24,13 @@ export default function MovieReview() {
     }
 
     return (
-        <div>
-            <h2>Reviews</h2>
-            <ul>
-                {reviews.map((review) => (
-                    <li key={review.id}>
-                        <p>{review.author} says:</p>
-                        <p>{review.content}</p>
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <ul className={styles.reviewsList}>
+            {reviews.map(review => (
+                <li key={review.id} className={styles.reviewItem}>
+                    <h3>{review.author}</h3>
+                    <p>{review.content}</p>
+                </li>
+            ))}
+        </ul>
     );
 }
