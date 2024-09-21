@@ -1,15 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import styles from './GoBack.module.css';
 
-export default function GoBack() {
+export default function GoBack({ backLinkHref }) {
     const navigate = useNavigate();
 
     const handleGoBack = () => {
-        if (window.history.length > 2) {
-            navigate(-1);
-        } else {
-            navigate('/movies');
-        }
+        navigate(backLinkHref);
     };
 
     return (

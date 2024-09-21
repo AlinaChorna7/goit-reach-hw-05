@@ -1,4 +1,4 @@
-import { Outlet, useParams, Link } from "react-router-dom";
+import { Outlet, useParams, Link, useLocation } from "react-router-dom";
 import { fetchMovieDetails } from "../../services/TheMoviesApi";
 import { useEffect, useState } from "react";
 import GoBack from "../../components/GoBack/GoBack";
@@ -7,6 +7,8 @@ import styles from './MovieDetailsPage.module.css';
 export default function MovieDetailsPage() {
     const { movieId } = useParams();
     const [movie, setMovie] = useState(null);
+    const location = useLocation();
+    const backLinkHref = location.state?.from || '/movies'; // За замовчуванням '/movies'
 
     useEffect(() => {
         const getMovieDetails = async () => {
@@ -26,7 +28,7 @@ export default function MovieDetailsPage() {
 
     return (
         <div className={styles.container}>
-            <GoBack />
+            <GoBack backLinkHref={backLinkHref} />
             <div className={styles.movieDetails}>
                 <img
                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}

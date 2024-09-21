@@ -6,7 +6,7 @@ import Navigation from './components/Navigation/Navigation';
 import { lazy, Suspense } from 'react';
 
 
-const SearchMovies = lazy(() => import('./pages/MoviesPage/MoviesPage'));
+const MoviesPage = lazy(() => import('./pages/MoviesPage/MoviesPage'));
 const MovieDetailsPage = lazy(() => import('./pages/MovieDetailsPage/MovieDetailsPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
 
@@ -17,19 +17,20 @@ export default function App() {
     return (
         <div>
             <Navigation />
-           
+            <Suspense fallback={<div>Loading...</div>}>
                 <Routes>
                     <Route path='/' element={<HomePage />} />
                     
-                    <Route path='/movies' element={<Suspense fallback={<div>Loading...</div>}><SearchMovies />  </Suspense>} />  
+                    <Route path='/movies' element={<MoviesPage />  } />  
                     
-                    <Route path='/movies/:movieId' element={<Suspense fallback={<div>Loading...</div>}><MovieDetailsPage /></Suspense>}>
-                        <Route path='cast' element={<Suspense fallback={<div>Loading...</div>}><MovieCast /></Suspense>} />
-                        <Route path='reviews' element={<Suspense fallback={<div>Loading...</div>}><MovieReview /></Suspense>} />
+                    <Route path='/movies/:movieId' element={<MovieDetailsPage />}>
+                        <Route path='cast' element={<MovieCast />} />
+                        <Route path='reviews' element={<MovieReview />} />
                     </Route>   
-                    <Route path='*' element={<Suspense fallback={<div>Loading...</div>}><NotFoundPage /></Suspense>} />
+                    <Route path='*' element={<NotFoundPage />} />
+                    
                 </Routes>
-        
+                </Suspense>
         </div>
     );
 }
