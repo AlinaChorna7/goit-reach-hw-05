@@ -8,7 +8,7 @@ export default function MovieDetailsPage() {
     const { movieId } = useParams();
     const [movie, setMovie] = useState(null);
     const location = useLocation();
-    const backLinkHref = location.state?.from || '/movies'; // За замовчуванням '/movies'
+    const backLinkHref = location.state?.from || '/movies'; 
 
     useEffect(() => {
         const getMovieDetails = async () => {

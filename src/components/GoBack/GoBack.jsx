@@ -1,11 +1,17 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import styles from './GoBack.module.css';
 
 export default function GoBack({ backLinkHref }) {
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleGoBack = () => {
-        navigate(backLinkHref);
+        
+        if (location.state?.from) {
+            navigate(location.state.from);
+        } else {
+            navigate(backLinkHref); 
+        }
     };
 
     return (
