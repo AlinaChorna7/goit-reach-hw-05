@@ -28,6 +28,7 @@ export default function MovieDetailsPage() {
 
     return (
         <div className={styles.container}>
+           
             <GoBack backLinkHref={backLinkHref} />
             <div className={styles.movieDetails}>
                 <img

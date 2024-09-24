@@ -8,14 +8,21 @@ export default function MoviesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
-  useEffect(() => {
-    const getMovies = async () => {
-      if (!query) return;
+useEffect(()=>{
+  const getMovies = async()=>{
+    if(!query) return;
+    try {
       const movies = await fetchMoviesByQuery(query);
-      setMovies(movies);
-    };
-    getMovies();
-  }, [query]);
+    setMovies(movies)
+    } catch (error) {
+      console.error('error fetching movies', error)
+    }
+    
+  }
+  getMovies()
+}, [query])
+
+
 
   const handleSearch = (event) => {
     event.preventDefault();
