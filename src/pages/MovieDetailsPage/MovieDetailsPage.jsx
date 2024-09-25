@@ -28,7 +28,6 @@ export default function MovieDetailsPage() {
 
     return (
         <div className={styles.container}>
-           
             <GoBack backLinkHref={backLinkHref} />
             <div className={styles.movieDetails}>
                 <img
@@ -47,8 +46,9 @@ export default function MovieDetailsPage() {
             </div>
             <div className={styles.links}>
                 <h2>Additional Information</h2>
-                <Link to={`/movies/${movieId}/cast`} className={styles.link}>Cast</Link>
-                <Link to={`/movies/${movieId}/reviews`} className={styles.link}>Reviews</Link>
+    
+                <Link to={`/movies/${movieId}/cast`} state={{ from: backLinkHref }} className={styles.link}>Cast</Link>
+                <Link to={`/movies/${movieId}/reviews`} state={{ from: backLinkHref }} className={styles.link}>Reviews</Link>
             </div>
             <Outlet />
         </div>

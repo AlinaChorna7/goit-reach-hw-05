@@ -6,11 +6,10 @@ export default function GoBack({ backLinkHref }) {
     const location = useLocation();
 
     const handleGoBack = () => {
-        
         if (location.state?.from) {
             navigate(location.state.from);
         } else {
-            navigate(backLinkHref); 
+            navigate(backLinkHref);
         }
     };
 
