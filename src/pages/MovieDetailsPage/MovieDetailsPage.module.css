@@ -1,7 +1,7 @@
 .container {
   padding: 20px;
   width: 100%;
-  max-width: 480px; /* Початково для мобільних */
+  max-width: 450px; /* Початково для мобільних */
   display: flex;
   flex-direction: column;
 }
@@ -11,7 +11,8 @@
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px; /* Додаємо відступ після постера */
+  margin-bottom: 20px;
+  margin-top: 20px; /* Додаємо відступ після постера */
 }
 
 .info {
@@ -86,8 +87,9 @@
 /* Для комп'ютерів */
 @media (min-width: 1024px) {
   .container {
-    max-width: 800px;
-    flex-direction: row;
+    max-width: 880px;
+    padding: 20px;
+  
   }
 
   .movieDetails {
@@ -99,7 +101,8 @@
 
   .poster {
     width: 300px;
-    margin-right: 20px; /* Відступ праворуч від постера */
+    margin-right: 20px;
+
   }
 
   .info {
