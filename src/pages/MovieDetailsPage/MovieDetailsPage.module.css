@@ -1,73 +1,117 @@
 .container {
   padding: 20px;
+  width: 100%;
+  max-width: 480px; /* Початково для мобільних */
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-}
-
-.movieDetails {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 800px;
-  margin-top: 20px;
 }
 
 .poster {
-  width: 300px;
+  width: 100%; /* Постер на всю ширину екрана */
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px; /* Додаємо відступ після постера */
 }
 
 .info {
-  flex: 1;
-  margin-left: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .title {
-  font-size: 32px;
- 
+  font-size: 24px; /* Менший розмір для мобільних */
   margin-bottom: 10px;
+  text-align: center; /* Центруємо текст */
 }
 
 .overview {
+  font-size: 14px;
   margin-bottom: 10px;
-  font-size: 16px;
+  text-align: justify; /* Для кращого читання тексту */
 }
 
 .releaseDate,
 .rating {
-  font-size: 14px;
+  font-size: 12px;
   margin-bottom: 10px;
+  text-align: center; /* Центруємо */
 }
 
-.title-additional{
-    margin-bottom: 0;
-    font-size: 16px;
+.title-additional {
+  margin-bottom: 0;
+  font-size: 14px;
+  text-align: center;
 }
 
 .links {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Вирівнювання по лівому краю */
+  align-items: center; /* Центруємо для мобільних */
   margin-top: 20px;
 }
 
 .link {
-    text-decoration: underline;
- 
- 
+  text-decoration: underline;
   color: black;
-
-
+  font-size: 14px;
+  margin-bottom: 10px; /* Відступ між посиланнями */
 }
 
 .link:hover {
-color: blue;
+  color: blue;
 }
- 
+
+/* Для планшетів */
+@media (min-width: 768px) {
+  .container {
+    max-width: 600px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .overview {
+    font-size: 16px;
+  }
+
+  .releaseDate,
+  .rating {
+    font-size: 14px;
+  }
+}
+
+/* Для комп'ютерів */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 800px;
+    flex-direction: row;
+  }
+
+  .movieDetails {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .poster {
+    width: 300px;
+    margin-right: 20px; /* Відступ праворуч від постера */
+  }
+
+  .info {
+    margin-left: 20px;
+  }
+
+  .title {
+    font-size: 32px;
+    text-align: left; /* Вирівнювання вліво */
+  }
+
+  .links {
+    align-items: flex-start; /* Вирівнювання вліво */
+  }
+}
