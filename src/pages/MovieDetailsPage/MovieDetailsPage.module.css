@@ -1,18 +1,18 @@
 .container {
   padding: 20px;
   width: 100%;
-  max-width: 450px; /* Початково для мобільних */
+  max-width: 450px; 
   display: flex;
   flex-direction: column;
 }
 
 .poster {
-  width: 100%; /* Постер на всю ширину екрана */
+  width: 100%; 
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
-  margin-top: 20px; /* Додаємо відступ після постера */
+  margin-top: 20px; 
 }
 
 .info {
@@ -22,22 +22,22 @@
 }
 
 .title {
-  font-size: 24px; /* Менший розмір для мобільних */
+  font-size: 24px; 
   margin-bottom: 10px;
-  text-align: center; /* Центруємо текст */
+  text-align: center;
 }
 
 .overview {
   font-size: 14px;
   margin-bottom: 10px;
-  text-align: justify; /* Для кращого читання тексту */
+  text-align: justify; 
 }
 
 .releaseDate,
 .rating {
   font-size: 12px;
   margin-bottom: 10px;
-  text-align: center; /* Центруємо */
+  text-align: center; 
 }
 
 .title-additional {
@@ -49,7 +49,7 @@
 .links {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Центруємо для мобільних */
+  align-items: center; 
   margin-top: 20px;
 }
 
@@ -57,14 +57,12 @@
   text-decoration: underline;
   color: black;
   font-size: 14px;
-  margin-bottom: 10px; /* Відступ між посиланнями */
+  margin-bottom: 10px; 
 }
 
-.link:hover {
-  color: blue;
-}
 
-/* Для планшетів */
+
+
 @media (min-width: 768px) {
   .container {
     max-width: 600px;
@@ -84,7 +82,7 @@
   }
 }
 
-/* Для комп'ютерів */
+
 @media (min-width: 1024px) {
   .container {
     max-width: 880px;
@@ -109,12 +107,9 @@
     margin-left: 20px;
   }
 
-  .title {
-    font-size: 32px;
-    text-align: left; /* Вирівнювання вліво */
-  }
+ 
 
   .links {
-    align-items: flex-start; /* Вирівнювання вліво */
+    align-items: flex-start; 
   }
 }

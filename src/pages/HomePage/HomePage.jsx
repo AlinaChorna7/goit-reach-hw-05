@@ -18,8 +18,8 @@ export default function HomePage() {
  }, [])
 
   return (
-    <div>
-      <h1>Trending Movies</h1>
+    <div className='home-page'>
+      <h1 className='heading'>Trending Movies</h1>
       <MovieList movies={trendingMovies} />
     </div>
   );

@@ -1,0 +1,64 @@
+
+.movies-page {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+
+  .search-form {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+ 
+  .search-input {
+    /* flex: 1; */
+    padding: 10px 15px;
+    width: 200px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .search-input:focus {
+    border-color: #ff6347;
+    box-shadow: 0 0 6px rgba(255, 99, 71, 0.5);
+    outline: none;
+  }
+  
+  /* Кнопка пошуку */
+  .search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ff6347;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .search-button:hover {
+    background-color: #fafafa;
+    transform: scale(1.05);
+  }
+  
+  /* Адаптивність */
+  @media (max-width: 768px) {
+    .search-form {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .search-button {
+      width: 100%;
+    }
+  }
+  

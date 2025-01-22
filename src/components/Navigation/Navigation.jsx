@@ -1,15 +1,29 @@
-import { Link } from 'react-router-dom';
-import styles from './Navigation.module.css';
+import { NavLink } from 'react-router-dom';
+import './Navigation.css';
 
 export default function Navigation() {
     return (
-        <nav className={styles.nav}>
-            <ul className={styles.navList}>
-                <li className={styles.navItem}>
-                    <Link to="/" className={styles.navLink}>Home</Link>
+        <nav className="nav">
+            <ul className="nav-list">
+                <li className="nav-item">
+                    <NavLink 
+                        to="/" 
+                        className={({ isActive }) => 
+                            isActive ? 'nav-link active' : 'nav-link'
+                        }
+                    >
+                        Home
+                    </NavLink>
                 </li>
-                <li className={styles.navItem}>
-                    <Link to="/movies" className={styles.navLink}>Movies</Link>
+                <li className="nav-item">
+                    <NavLink 
+                        to="/movies" 
+                        className={({ isActive }) => 
+                            isActive ? 'nav-link active' : 'nav-link'
+                        }
+                    >
+                        Movies
+                    </NavLink>
                 </li>
             </ul>
         </nav>

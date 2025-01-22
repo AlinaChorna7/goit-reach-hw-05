@@ -2,27 +2,25 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { fetchMoviesByQuery } from '../../services/TheMoviesApi';
 import MovieList from '../../components/MovieList/MovieList';
+import './MoviesPage.css';
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
-useEffect(()=>{
-  const getMovies = async()=>{
-    if(!query) return;
-    try {
-      const movies = await fetchMoviesByQuery(query);
-    setMovies(movies)
-    } catch (error) {
-      console.error('error fetching movies', error)
-    }
-    
-  }
-  getMovies()
-}, [query])
-
-
+  useEffect(() => {
+    const getMovies = async () => {
+      if (!query) return;
+      try {
+        const movies = await fetchMoviesByQuery(query);
+        setMovies(movies);
+      } catch (error) {
+        console.error('Error fetching movies', error);
+      }
+    };
+    getMovies();
+  }, [query]);
 
   const handleSearch = (event) => {
     event.preventDefault();
@@ -32,10 +30,16 @@ useEffect(()=>{
   };
 
   return (
-    <div>
-      <form onSubmit={handleSearch}>
-        <input type="text" name="query" defaultValue={query} />
-        <button type="submit">Search</button>
+    <div className="movies-page">
+      <form onSubmit={handleSearch} className="search-form">
+        <input 
+          type="text" 
+          name="query" 
+          defaultValue={query} 
+          placeholder="Search for a movie..." 
+          className="search-input" 
+        />
+        <button type="submit" className="search-button">Search</button>
       </form>
       <MovieList movies={movies} />
     </div>
